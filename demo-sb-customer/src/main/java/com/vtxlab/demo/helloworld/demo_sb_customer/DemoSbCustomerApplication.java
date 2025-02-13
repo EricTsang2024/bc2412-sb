@@ -1,13 +1,13 @@
-package com.vtxlab.demo.helloworld.class_demo_helloworld.controller;
+package com.vtxlab.demo.helloworld.demo_sb_customer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ClassDemoHelloworldApplication {
+public class DemoSbCustomerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ClassDemoHelloworldApplication.class, args);
+		SpringApplication.run(DemoSbCustomerApplication.class, args);
 	}
 
 }
