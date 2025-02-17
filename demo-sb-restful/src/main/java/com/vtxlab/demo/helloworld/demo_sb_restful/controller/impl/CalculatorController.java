@@ -31,6 +31,12 @@ public class CalculatorController {
   // CalculatorController 需要使用 CalculatorService 的功能來執行計算操作
   
   // http://localhost:8082/v1/operation/SUM?x=1&y=2
+  // http://localhost:8082: 這部分指的是您應用程式運行在本機（localhost）的 8082 埠口上，通過這個 URL 您可以訪問您的應用程式。
+// /v1/operation/SUM: 這是 URL 的路徑部分，用來指示您想要訪問的資源或端點。在這個例子中，您可能正在訪問一個名為 operation 的端點，並且可能正在執行一個名為 SUM 的操作。
+// ?x=1&y=2: 這是 URL 的查詢參數部分，用來傳遞參數給伺服器。在這裡，您正在傳遞兩個參數 x 和 y，它們的值分別是 1 和 2。
+// 總的來說，這個 URL 格式用於指示瀏覽器或客戶端應用程式向伺服器發送 HTTP 請求，並指示伺服器執行特定的操作或返回特定的資源
+
+// http://localhost:8082/v1/operation/SUM?x=1&y=2
   @GetMapping(value = "/operation/{operation}") // 設定了一個 GET 請求的路徑 /operation/{operation}，並且定義了參數 operation 作為路徑變數
   @ResponseStatus(HttpStatus.OK) // @ResponseStatus 是 Spring Framework 中的標註之一 用於定義控制器方法的 HTTP 響應狀態碼。
   // 在這裡，您將響應狀態碼設置為 HttpStatus.OK，

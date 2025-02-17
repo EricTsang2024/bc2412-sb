@@ -1,10 +1,15 @@
 package com.vtxlab.demo.helloworld.demo_sb_customer.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 
+// ! Data Transfer Object
+// This DTO is for deserialization (JSON -> OBJECT)
 @Getter
-
+@Builder
+@ToString
 public class UserDto {
   private Long id;
   private String name;
@@ -14,16 +19,18 @@ public class UserDto {
   private String phone;
   private String website;
   private Company company;
- 
-@Getter
+
+  @Getter
+  @Builder
   public static class Address {
     private String street;
     private String suite;
     private String city;
     private String zipcode;
     private Geo geo;
-    
+
     @Getter
+    @Builder
     public static class Geo {
       @JsonProperty(value = "lat")
       private String latitude;
@@ -33,6 +40,7 @@ public class UserDto {
   }
 
   @Getter
+  @Builder
   public static class Company {
     private String name;
     private String catchPhrase;

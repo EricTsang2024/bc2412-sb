@@ -1,9 +1,11 @@
 package com.vtxlab.demo.helloworld.demo_sb_customer.controller;
 
 import java.util.List;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import com.vtxlab.demo.helloworld.demo_sb_customer.codewave.ApiResp;
 import com.vtxlab.demo.helloworld.demo_sb_customer.entity.CustomerEntity;
 
@@ -11,12 +13,15 @@ import com.vtxlab.demo.helloworld.demo_sb_customer.entity.CustomerEntity;
 public interface CustomerOperation { // 介面是一種定義了方法簽名但沒有方法實作的類型
 
   @GetMapping(value = "/customers")
+  @ResponseStatus(HttpStatus.OK) // 200
   ApiResp<List<CustomerEntity>> getCustomers();
   // 定義了一個名為 getCustomers 的方法，並使用了 @GetMapping 註解來標記這是一個用於處理 HTTP GET 請求的方法。
   // 這個方法應該回傳一個 List<CustomerEntity>，用於獲取客戶資料
 
    @PostMapping(value = "/customer") 
    // 使用了 @PostMapping 註解來標記這是一個用於處理 HTTP POST 請求的方法
+
+   @ResponseStatus(HttpStatus.CREATED) // 201 主要用201創建新對象
   ApiResp<CustomerEntity> createCustomer(@RequestBody CustomerEntity customerEntity);
   // 在介面中定義了一個名為 createCustomer 的方法
   // 接收一個 CustomerEntity 物件作為輸入參數，並返回一個 CustomerEntity，用於創建新的客戶

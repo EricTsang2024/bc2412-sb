@@ -1,9 +1,10 @@
 package com.vtxlab.demo.helloworld.demo_sb_customer.codewave;
 
+// 這段程式碼使用了建造者模式，通過 Builder 類別來幫助構建複雜的 ApiResp 物件，並且可以靈活地設置其屬性值
 public class ApiResp<T> {
-  // 這個類別使用泛型 T 來表示響應中的數據類型
+  // 這個類別使用泛型 T, T代表數據的型別。
   private String code;
-  // 代表響應代碼、消息和數據的屬性，以及相應的 getter 方法來訪問這些屬性
+  // 代表三個私有屬性、消息和數據的屬性
   private String message;
   private T data;
 
@@ -14,14 +15,20 @@ public class ApiResp<T> {
     return new Builder<>();
   }
 
+  public ApiResp() {
+    
+  }
+
   // 這個構造函數接受一個 Builder 物件作為參數，
-  // 並從該 Builder 物件中獲取代碼、消息和數據屬性的值
+  // 使用 Builder 物件中的值, 初始化 ApiResp 物件
   public ApiResp(Builder<T> builder) {
     this.code = builder.code;
     this.message = builder.message;
     this.data = builder.data;
+  // 將 Builder 物件中的代碼、訊息和數據值設置到 ApiResp 物件中
   }
 
+  // 相應的 getter 方法來獲取 ApiResp 物件中的代碼、訊息和數據值
   public String getCode() {
     return this.code;
   }
@@ -34,14 +41,13 @@ public class ApiResp<T> {
     return this.data;
   }
 
-  // 這是一個內部 Builder 類別，用於構建 ApiResp 物件。它包含了代表響應代碼、消息和數據的屬性，
-  // 以及相應的設置方法（syscode() 和 data()）和 build() 方法來創建 ApiResp 物件
+  // 內部靜態類別 Builder<T>，用於構建 ApiResp 物件。
   public static class Builder<T> {
     private String code;
     private String message;
     private T data;
 
-    // 設置方法 syscode()來創建 ApiResp 物件
+    // 設置 Builder 物件中的代碼和訊息屬性，使用 SysCode 物件的值
     public Builder<T> syscode(SysCode sysCode) {
       this.code = sysCode.getCode();
       this.message = sysCode.getMessage();
@@ -58,12 +64,13 @@ public class ApiResp<T> {
     //   return this;
     // }
 
-    // 設置方法 data()來創建 ApiResp 物件
+    // 設置 Builder 物件中的數據屬性
     public Builder<T> data(T data) {
       this.data = data;
       return this;
     }
 
+    // 建造 ApiResp 物件，使用 Builder 物件中的值來初始化 ApiResp
     public ApiResp<T> build() {
       return new ApiResp<>(this);
     }

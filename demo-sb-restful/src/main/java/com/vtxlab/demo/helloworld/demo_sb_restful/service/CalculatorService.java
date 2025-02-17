@@ -36,4 +36,15 @@ public class CalculatorService {
           "CalculatorService.divide() / zero." + "x=" + x + ",y=" + y);
     return x / y;
   }
+
+
+
+public static void main(String[] args) {
+  CalculatorService num = new CalculatorService();
+  int x = 10;
+  int y = 0;
+  int sumResult = num.divide(x, y);
+  
+  System.out.println("Sum result: " + sumResult);
+}
 }

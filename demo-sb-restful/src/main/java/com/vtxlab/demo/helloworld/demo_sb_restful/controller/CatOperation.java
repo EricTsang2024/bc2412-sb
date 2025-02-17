@@ -19,6 +19,9 @@ public interface CatOperation {
   @GetMapping(value = "/cats")
   public List<Cat> getCats();
 
+    // Get Cat By id
+  // http://localhost:8082/cat?id=1     根据提供的id获取对应的猫
+  // 以 ? 開頭，多個參數之間使用 & 進行分隔
   @GetMapping(value = "/cat")
   public Cat getCat(@RequestParam Long id);
 
