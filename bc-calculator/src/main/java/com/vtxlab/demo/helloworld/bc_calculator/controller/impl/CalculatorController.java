@@ -3,9 +3,7 @@ package com.vtxlab.demo.helloworld.bc_calculator.controller.impl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +20,7 @@ public class CalculatorController implements CalculatorOperation{
    @Autowired
     private CalculatorServiceImpl calculatorServiceImpl;
 
-    @Override
+    @Override  
     public OperatorDto calculateUsingQueryParams(@RequestParam String x, @RequestParam String y, 
     @RequestParam String operation) {    
     OperationDto operationDto = OperationDto.fromString(operation);
@@ -31,15 +29,15 @@ public class CalculatorController implements CalculatorOperation{
 }
     
     @Override
-    @PostMapping("/operation")
-    public String calculateUsingJsonPayload(@RequestBody OperatorDto operatorDto) {
+    
+    public OperatorDto calculateUsingJsonPayload(@RequestBody OperatorDto operatorDto) {
         OperationDto operationDto = OperationDto.fromString(operatorDto.getOperation());
-        Double finalresult = calculatorService.operate(xValue, yValue, operationDto);
-        return String.format("%.5f", finalresult);
+        String result = calculatorServiceImpl.operate(operatorDto.getX(), operatorDto.getY(), operationDto);
+     return new OperatorDto(operatorDto.getX(), operatorDto.getY(), operatorDto.getOperation(), result);
     }
 
     @Override
-    @GetMapping("/operation/{x}/{y}/{operation}")
+ 
     public OperatorDto calculateUsingPathParams(@PathVariable String x, @PathVariable String y,
      @PathVariable String operation) {
         OperationDto operationDto = OperationDto.fromString(operation);

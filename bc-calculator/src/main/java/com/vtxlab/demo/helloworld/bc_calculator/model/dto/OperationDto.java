@@ -1,7 +1,9 @@
 package com.vtxlab.demo.helloworld.bc_calculator.model.dto;
 
 import com.vtxlab.demo.helloworld.bc_calculator.Exception.InvalidInputException;
+import lombok.Getter;
 
+@Getter
 public enum OperationDto {
   ADD, SUB, MUL, DIV,;
 
